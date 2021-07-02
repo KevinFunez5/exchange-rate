@@ -5,7 +5,7 @@ import './css/styles.css';
 import RateService from "./js/exchange";
 
 function rateMe(response) {
-
+  $('#result').append(`<p>Current Exhcange Rates:<span id="exrate">${response.conversion_rates} `);
 }
 
 
@@ -16,5 +16,13 @@ function rateMe(response) {
 
 
 $(document).ready(function() {
-  $('rate')
-})
+  $('rate').click(function() {
+    RateService.rateMe()
+      .then(function(response) {
+        rateMe(response);
+      })
+      .catch(function(error){
+        $('#result').append(`<p>There's been an error and this is it: ${error}<p>`);
+      });
+  });
+});
