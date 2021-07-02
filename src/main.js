@@ -6,7 +6,7 @@ import RateService from "./js/exchange";
 
 function rate(response) {
   if (response) {
-    $('#result').append(`<p>Current Exhcange Rates${response.conversion_rates}</p>`);
+    $('#result').append(`<p>Current Exhcange Rates ${response.conversion_rate}</p>`);
   }
 }
 
@@ -18,10 +18,10 @@ function rate(response) {
 
 
 $(document).ready(function() {
-  $('#rate').click(function() {
+  $('#btn').click(function() {
     let userInputExchange = $('#exInput').val();
     event.preventDefault();
-    RateService.getRate()
+    RateService.getRate(userInputExchange)
       .then(function(response) {
         rate(response);
       })

@@ -1,5 +1,5 @@
 export default class RateService {
-  static getRate() {
+  static getRate(userInputExchange) {
     return fetch(`https://v6.exchangerate-api.com/v6/007304291feade653405d100/pair/USD/${userInputExchange}`)
       .then(function(response) {
         if(!response.ok) {
